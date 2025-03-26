@@ -1,54 +1,121 @@
-<h1 align="center"><b>🧠 Drowsiness Detection (Image-based Classification)</b></h1>
+<!DOCTYPE html>
+<html>
+<head>
+   
+</head>
+<body>
 
-<h2><b>📍 Objective</b></h2>
-<p>
-Train a Convolutional Neural Network (CNN) to classify drowsiness vs. alert states based on pre-collected eye state images.
-</p>
+<h1>DROWSINESS DETECTION MODEL</h1>
+<p>This project is a deep learning-based model that detects whether eyes are open or closed from an image. 
+It can be used for drowsiness detection systems, especially for drivers or real-time monitoring.</p>
 
-<h2><b>🛠 Tech Stack</b></h2>
+<h2>Tech Stack Used</h2>
 <ul>
-  <li><b>Language:</b> Python</li>
-  <li><b>Libraries:</b> TensorFlow, Keras, NumPy, Matplotlib, Scikit-learn</li>
-  <li><b>Development Environment:</b> Jupyter Notebook</li>
+    <li><b>Python</b></li>
+    <li><b>Libraries:</b> TensorFlow, Keras, OpenCV, Matplotlib, NumPy, OS</li>
 </ul>
 
-<h2><b>📂 Dataset</b></h2>
+<h2>Dataset</h2>
+<p>Images of eyes classified into two categories:</p>
 <ul>
-  <li>Loaded from pre-saved <b>NumPy arrays (X.npy and y.npy)</b>.</li>
-  <li>Images of eye states labeled as drowsy/alert.</li>
-  <li>Dataset was split into training and validation sets.</li>
+    <li>Closed</li>
+    <li>Open</li>
 </ul>
-
-<h2><b>📈 Model Training</b></h2>
-<ul>
-  <li><b>Architecture:</b> Convolutional Neural Network (CNN) with multiple Conv2D & MaxPooling layers.</li>
-  <li><b>Loss Function:</b> Sparse Categorical Crossentropy</li>
-  <li><b>Epochs:</b> 25 (as per notebook)</li>
-  <li><b>Evaluation:</b> Accuracy and loss curves plotted.</li>
-</ul>
-
-<h2><b>📦 Dependencies</b></h2>
+<p>Folder structure:</p>
 <pre>
-tensorflow==2.15.0
-keras==2.15.0
-numpy==1.24.3
-matplotlib==3.7.3
-scikit-learn==1.3.0
+train
+   ├── Closed
+   └── Open
 </pre>
 
 
-<h2><b>📊 Results</b></h2>
+<h2>Preprocessing</h2>
 <ul>
-  <li>Achieved good classification accuracy on validation data.</li>
-  <li>Clear training vs. validation accuracy & loss plots included.</li>
-  <li>Model saved in <code>.h5</code> format for future use.</li>
+    <li>Images are loaded and resized.</li>
+    <li>Values are scaled between 0 and 1 (instead of 0 to 255) for faster and smoother training.</li>
+    <li>Dataset is split into:
+        <ul>
+            <li>70% — Training</li>
+            <li>20% — Validation</li>
+            <li>10% — Testing</li>
+        </ul>
+    </li>
 </ul>
 
-<h2><b>🚀 Future Enhancements</b></h2>
+<h2>Model Architecture</h2>
+<p>Built using Keras Sequential API</p>
+<p>Layers used:</p>
 <ul>
-  <li>Add real-time webcam integration for practical application.</li>
-  <li>Use larger datasets for more robustness.</li>
-  <li>Deploy using Flask or Streamlit as a web app.</li>
+    <li>Conv2D + ReLU</li>
+    <li>MaxPooling</li>
+    <li>Flatten</li>
+    <li>Dense Layers with sigmoid activation for binary classification</li>
 </ul>
+<pre>
+Conv2D(16) -> MaxPooling  
+Conv2D(32) -> MaxPooling  
+Conv2D(16) -> MaxPooling  
+Flatten -> Dense(256) -> Dense(1) with sigmoid
+</pre>
+
+<h2>Training</h2>
+<ul>
+    <li>Optimizer: Adam</li>
+    <li>Loss: BinaryCrossentropy</li>
+    <li>Epochs: 20</li>
+    <li>Callback: TensorBoard logging</li>
+</ul>
+
+<h2>Performance</h2>
+<p>The model achieved:</p>
+<ul>
+    <li>Precision: 1.0</li>
+    <li>Recall: 1.0</li>
+    <li>Accuracy: 1.0</li>
+</ul>
+<p>(Results may vary based on dataset size and variety.)</p>
+
+<h2>Testing</h2>
+<p>Tested with custom screenshots/images.</p>
+<p>The model predicts:</p>
+<ul>
+    <li>If yhat > 0.5 → Open</li>
+    <li>Else → Closed</li>
+</ul>
+
+<h2>How to Run</h2>
+<ol>
+    <li>Clone the repo</li>
+    <li>Keep your dataset in <b>train/Closed</b> and <b>train/Open</b> folders.</li>
+    <li>Run the Python file or Jupyter Notebook.</li>
+    <li>Predict with:</li>
+</ol>
+<pre>
+import cv2
+import tensorflow as tf
+import numpy as np
+
+img = cv2.imread('your_image.png')
+resize = tf.image.resize(img, (256,256))
+yhat = model.predict(np.expand_dims(resize/255, 0))
+if yhat > 0.5:
+    print("Eyes are Open")
+else:
+    print("Eyes are Closed")
+</pre>
+
+<h2>Future Work</h2>
+<ul>
+    <li>Add real-time video stream detection.</li>
+    <li>Deploy as a web app or mobile app.</li>
+    <li>Integrate with alert systems for drowsiness detection.</li>
+</ul>
+
+<h2>Contributing</h2>
+<p>Feel free to raise issues or contribute by improving the model or code.</p>
+
+</body>
+</html>
+
 
 
