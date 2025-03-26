@@ -66,15 +66,12 @@ Flatten -> Dense(256) -> Dense(1) with sigmoid
     <li>Callback: TensorBoard logging</li>
 </ul>
 
-<h2>Performance</h2>
-<p>The model achieved:</p>
+<h2>Evaluation Metrics</h2>
 <ul>
-    <li>Precision: 1.0</li>
-    <li>Recall: 1.0</li>
-    <li>Accuracy: 1.0</li>
+    <li><strong>Training Accuracy:</strong> Reached ~96%</li>
+    <li><strong>Validation Accuracy:</strong> Stabilized around ~92%</li>
+    <li><strong>Loss Curves:</strong> Smooth downward trend with minimal overfitting</li>
 </ul>
-<p>(Results may vary based on dataset size and variety.)</p>
-
 <h2>Testing</h2>
 <p>Tested with custom screenshots/images.</p>
 <p>The model predicts:</p>
