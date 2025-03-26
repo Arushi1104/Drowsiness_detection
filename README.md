@@ -22,7 +22,6 @@ Train a Convolutional Neural Network (CNN) to classify drowsiness vs. alert stat
 <h2><b>📈 Model Training</b></h2>
 <ul>
   <li><b>Architecture:</b> Convolutional Neural Network (CNN) with multiple Conv2D & MaxPooling layers.</li>
-  <li><b>Optimizer:</b> Adam</li>
   <li><b>Loss Function:</b> Sparse Categorical Crossentropy</li>
   <li><b>Epochs:</b> 25 (as per notebook)</li>
   <li><b>Evaluation:</b> Accuracy and loss curves plotted.</li>
