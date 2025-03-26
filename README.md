@@ -12,7 +12,7 @@ It can be used for drowsiness detection systems, especially for drivers or real-
 <h2>Tech Stack Used</h2>
 <ul>
     <li><b>Python</b></li>
-    <li><b>Libraries:</b> TensorFlow, Keras, OpenCV, Matplotlib, NumPy, OS</li>
+    <li><b>Libraries:</b> TensorFlow, Keras, OpenCV, Matplotlib, NumPy</li>
 </ul>
 
 <h2>Dataset</h2>
